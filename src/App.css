@@ -2,6 +2,24 @@
   text-align: center;
 }
 
-.App input {
-  
+h1 {
+  font-size: 46px;
 }
+
+.App input {
+  height: 1.5rem;
+  width: 60%;
+  padding: 5px;
+  font-size: 21px;
+  margin-bottom: 10px;
+}
+
+.ListItems {
+  display: block;
+  margin: 0 auto;
+  width: 40%;
+  font-size: 21px;
+  text-align: left;
+}
+
+

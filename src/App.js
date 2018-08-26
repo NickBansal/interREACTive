@@ -22,7 +22,6 @@ class App extends Component {
         <h1>ToDo List</h1>
         
         <form onSubmit = {(e) => {
-          console.log(this.state.data)
           e.preventDefault();
           const data = [...this.state.data, this.state.inputText]
           this.setState({
@@ -40,9 +39,11 @@ class App extends Component {
 
         </form>
 
-        <ol>
-          {newElement}
-        </ol>
+        <div className='ListItems'>
+          <ol>
+            {newElement}
+          </ol>
+        </div>
 
       </div>
     );
