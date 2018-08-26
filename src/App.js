@@ -4,46 +4,46 @@ import './App.css';
 
 class App extends Component {
   state = {
-    name: 'Nicky',
-    color: 'red',
-    count: 5,
-    label: '',
+    inputText: '',
+    data: [],
   }
 
-  changeColor = () => {
-    this.setState({
-      label: "Wait for it...."
-    })
-
-    const countDown = setInterval(() => {
-      if (this.state.count !== 0) {
-        this.setState(prevState => ({
-          count: prevState.count - 1,
-        }))
-      }
-    }, 500)
-
-    setTimeout(() => {
-      this.setState(prevState => ({
-        name: prevState.name.toUpperCase() + ' BANG !!!',
-        color: 'green',
-        label: '',
-      }))
-      clearInterval(countDown)
-    },2500)
-  }  
-
-
+  
 
 
   render() {
+
+    const newElement = [...this.state.data].map((el, index) => {
+      return <li key={index}>{el}</li>
+    })
+
     return (
       <div className='App'>
-        <h1 style ={{color: this.state.color}}>{this.state.name}</h1>
-        <h3>{this.state.label}{this.state.count}</h3>
-        <button
-        onClick={this.changeColor}
-        >Change Colour!</button>
+        <h1>ToDo List</h1>
+        
+        <form onSubmit = {(e) => {
+          console.log(this.state.data)
+          e.preventDefault();
+          const data = [...this.state.data, this.state.inputText]
+          this.setState({
+            data, inputText: '',
+          })
+        }}>
+
+          <input 
+          type = 'text'  
+          value= {this.state.inputText}
+          onChange = {(e) => {
+            this.setState({inputText: e.target.value})
+          }}
+          />
+
+        </form>
+
+        <ol>
+          {newElement}
+        </ol>
+
       </div>
     );
   }
